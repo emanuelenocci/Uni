@@ -1,0 +1,76 @@
+/*In Java, il termine "factory" si riferisce a un design pattern utilizzato per creare oggetti senza specificare l'esatta classe di oggetti che verranno creati. Fornisce un'interfaccia per creare oggetti in una superclasse, ma consente alle sottoclassi di modificare il tipo di oggetti che verranno creati. Le factory sono comunemente usate per incapsulare la logica di creazione degli oggetti, specialmente quando il processo di creazione è complesso o coinvolge molti passaggi. Vediamo un esempio:*/
+
+public class Studente {
+    private String nome;
+    private String cognome;
+    private int eta;
+    private String matricola;
+
+    public Studente(String nome, String cognome, int eta, String matricola) {
+        this.nome = nome;
+        this.cognome = cognome;
+        this.eta = eta;
+        this.matricola = matricola;
+    }
+
+    public String getNome() {
+        return nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    public String getCognome() {
+        return cognome;
+    }
+
+    public void setCognome(String cognome) {
+        this.cognome = cognome;
+    }
+
+    public int getEta() {
+        return eta;
+    }
+
+    public void setEta(int eta) {
+        this.eta = eta;
+    }
+
+    public String getMatricola() {
+        return matricola;
+    }
+
+    public void setMatricola(String matricola) {
+        this.matricola = matricola;
+    }
+
+    @Override
+    public String toString() {
+        return "Studente{" +
+                "nome='" + nome + '\'' +
+                ", cognome='" + cognome + '\'' +
+                ", eta=" + eta +
+                ", matricola='" + matricola + '\'' +
+                '}';
+    }
+}
+
+/*StudenteFactory: Questa classe contiene metodi statici per creare oggetti Studente. Il metodo creaStudente accetta parametri per inizializzare un nuovo studente con i dati forniti, mentre creaStudenteDiDefault crea uno studente con dati di default.*/
+
+public class StudenteFactory {
+    public static Studente creaStudente(String nome, String cognome, String codiceFiscale) {
+        return new Studente(nome, cognome, codiceFiscale);
+    }
+}
+
+/*Classe Main: Questa classe contiene il metodo main, che dimostra come utilizzare la factory per creare oggetti Studente.*/
+
+public class Main {
+    public static void main(String[] args) {
+        // Creazione di uno studente con dati specifici
+        Studente s1 = StudenteFactory.creaStudente("Mario", "Rossi", "RSIMRI01P3DFG4");
+        System.out.println(s1);
+    }
+}
+
